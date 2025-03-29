@@ -4,6 +4,7 @@
 	<test name="Test">
 		<classes>
 			<class name="testcases.TC01_Login" />
+			<class name="testcases.TC02_HomePage" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
