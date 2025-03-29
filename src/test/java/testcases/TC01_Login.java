@@ -18,13 +18,14 @@ public class TC01_Login extends Setup {
 	LoginPageObjects loginPageobjects;
 
 	@Test(dataProvider = "DataDriven")
-	public void verifyLogin(String userName, String password) {
+	public void testCaseLogin(String userName, String password) {
 		loginPageobjects = new LoginPageObjects(webdriver);
 		System.out.println("UserName:"+userName);
 		System.out.println("Password:"+password);
 		loginPageobjects.enterUsername(userName);
 		loginPageobjects.enterPassword(password);
 		loginPageobjects.clickOnLoginButton();
+		loginPageobjects.validateLogin();
 
 	}
 

@@ -29,10 +29,15 @@ public class LoginPageObjects {
 
 	public void clickOnLoginButton() {
 		webdriver.findElement(loginButton).click();
+
+	}
+
+	public void validateLogin() {
 		if (webdriver.getTitle().contains("Logged In Successfully | Practice Test Automation")) {
 			ReportGeneration.extentReportGeneration("Student Login", "Login with valid credentials",
-					"Login Page loaded successfully");
+					"Login Page loaded successfully with valid credentials");
 		}
+
 	}
 
 }
