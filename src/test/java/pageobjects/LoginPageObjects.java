@@ -32,7 +32,7 @@ public class LoginPageObjects {
 
 	}
 
-	public void validateLogin() {
+	public void AssertLoginwithValidCredentials() {
 		if (webdriver.getTitle().contains("Logged In Successfully | Practice Test Automation")) {
 			ReportGeneration.extentReportGeneration("Student Login", "Login with valid credentials",
 					"Login Page loaded successfully with valid credentials");

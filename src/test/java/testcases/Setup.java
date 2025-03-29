@@ -2,10 +2,10 @@ package testcases;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Reporter;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
-
-import io.github.bonigarcia.wdm.WebDriverManager;
+import Utilities.PropertiesReader;
 
 public class Setup {
 
@@ -13,9 +13,10 @@ public class Setup {
 
 	@BeforeTest
 	public void navigateToURL() {
-		WebDriverManager.chromedriver().setup();
 		webdriver = new ChromeDriver();
-		webdriver.get("https://practicetestautomation.com/practice-test-login/");
+		PropertiesReader.readProperties("URL.properties");
+		webdriver.get(PropertiesReader.properties.getProperty("baseURL"));
+		Reporter.log("Launching Brower:"+ PropertiesReader.properties.getProperty("baseURL"));
 		webdriver.manage().window().maximize();
 
 	}
