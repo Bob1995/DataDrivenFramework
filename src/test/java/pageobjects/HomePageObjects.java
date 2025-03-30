@@ -24,7 +24,10 @@ public class HomePageObjects {
 		WebElement homePageText = webdriver.findElement(helloText);
 		if (homePageText.isDisplayed()) {
 			ReportGeneration.extentReportGeneration("Home Page", "Validate Home page",
-					"Validate Home Page loaded successfully");
+					"Validate Home Page loaded successfully", "PASS");
+		} else {
+			ReportGeneration.extentReportGeneration("Home Page", "Validate Home page",
+					"Validate Home Page loading failed", "fail");
 		}
 
 	}

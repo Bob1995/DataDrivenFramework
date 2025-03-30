@@ -2,6 +2,9 @@ package pageobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+import com.aventstack.extentreports.Status;
+
 import Utilities.ReportGeneration;
 import Utilities.Screenshotutility;
 
@@ -37,8 +40,12 @@ public class LoginPageObjects {
 		
 		if (webdriver.getTitle().contains("Logged In Successfully | Practice Test Automation")) {
 			ReportGeneration.extentReportGeneration("Student Login", "Login with valid credentials",
-					"Login Page loaded successfully with valid credentials");
+					"Login Page loaded successfully with valid credentials","PASS");
 			Screenshotutility.takeScreenshot(webdriver);
+		}
+		else {
+			ReportGeneration.extentReportGeneration("Student Login", "Login with valid credentials",
+					"Login Page loading failed","Fail");
 		}
 
 	}
