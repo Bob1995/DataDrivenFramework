@@ -11,13 +11,14 @@ import org.openqa.selenium.WebDriver;
 
 public class Screenshotutility {
 
-	static String formattedNow;
+	static String formattedNow = null;
+	static String path = "//src//test//resources//Screenshots//Screenshot";
 
 	public static void takeScreenshot(WebDriver webdriver) {
+		
 		TakesScreenshot scrShot = ((TakesScreenshot) webdriver);
 		File screenshot = scrShot.getScreenshotAs(OutputType.FILE);
-		File DestFile = new File(
-				System.getProperty("user.dir") + "//src//test//resources//Screenshots//Screenshot.png");
+		File DestFile = new File(System.getProperty("user.dir") + path + currentDateTimeStamp() + ".png");
 		try {
 			FileUtils.copyFile(screenshot, DestFile);
 		} catch (Exception e) {
@@ -25,11 +26,11 @@ public class Screenshotutility {
 		}
 	}
 
-	public void currentDateTimeStamp() {
+	public static String currentDateTimeStamp() {
 		LocalDateTime now = LocalDateTime.now();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-ddHH:mm:ss");
 		formattedNow = now.format(formatter);
-		System.out.println(formattedNow);
+		return formattedNow.toString().replace("+", "").replace("-", "").replace(":", "");
 	}
 
 }
