@@ -1,5 +1,8 @@
 package pageobjects;
 
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -44,6 +47,7 @@ public class LoginPageObjects {
 			Screenshotutility.takeScreenshot(webdriver);
 		}
 		else {
+			assertFalse(false,"Login page loading failed");
 			ReportGeneration.extentReportGeneration("Student Login", "Login with valid credentials",
 					"Login Page loading failed","Fail");
 		}
