@@ -1,10 +1,11 @@
 package testcases;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import Utilities.ExcelDataDriven;
 import pageobjects.LoginPageObjects;
-
+@Listeners(Utilities.ListenersUtility.class)
 public class TC01_Login extends Setup {
 
 	LoginPageObjects loginPageobjects;

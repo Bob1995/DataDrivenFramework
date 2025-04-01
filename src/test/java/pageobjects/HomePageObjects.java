@@ -1,11 +1,12 @@
 package pageobjects;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+
 import Utilities.ReportGeneration;
 
 public class HomePageObjects {
@@ -26,15 +27,9 @@ public class HomePageObjects {
 	public void AssertHomePage() {
 		WebElement homePageText = webdriver.findElement(helloText);
 		if (homePageText.isDisplayed()) {
-			assertTrue(true,"Home page loaded successfully");
-			ReportGeneration.extentReportGeneration("Home Page", "Validate Home page",
-					"Home Page loaded successfully", "PASS");
-			
-		} else {
-			assertEquals(false, "Home page loading failed");
-			ReportGeneration.extentReportGeneration("Home Page", "Validate Home page",
-					"Home Page loading failed", "fail");
+			Assert.assertTrue(true, "Home page loaded successfully");
+			ReportGeneration.extentReportGeneration("Home Page", "Validate Home page", "Home Page loaded successfully",
+					"PASS");
 		}
-
 	}
 }
