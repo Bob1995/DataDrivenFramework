@@ -11,7 +11,7 @@ public class TC02_HomePage extends Setup {
 	HomePageObjects homePageObjects;
 
 	@Test
-	public void NavigateToHomePage() {
+	public void verifyHomePage() {
 		homePageObjects = new HomePageObjects(webdriver);
 		homePageObjects.clickOnHomeTab();
 		homePageObjects.AssertHomePage();
