@@ -22,7 +22,7 @@ public class UtilitiesDemo {
 	@Test(priority = 1)
 	public void propertiesReader() {
 
-		PropertiesReader.properties.getProperty("baseURL");
+		
 		try {
 			filereader = new FileReader(
 					System.getProperty("user.dir") + "//src//test//resources//Configuration//URL.properties");
@@ -37,13 +37,13 @@ public class UtilitiesDemo {
 	}
 
 	@Test(priority = 2)
-	public static Object[][] excelReader(String excelFileName, String sheetName) throws Exception {
+	public void excelReader() throws Exception {
 
 		fileInputStream = new FileInputStream(
 				System.getProperty("user.dir") + "//src//test//resources//TestData//Credentials.xlsx" );
 
 		XSSFWorkbook workbook = new XSSFWorkbook(fileInputStream);
-		XSSFSheet sheet = workbook.getSheet(sheetName);
+		XSSFSheet sheet = workbook.getSheet("Sheet1");
 		int numberofRows = sheet.getPhysicalNumberOfRows();
 
 		Object[][] testData = new Object[numberofRows][2];
@@ -57,8 +57,6 @@ public class UtilitiesDemo {
 
 		}
 		logger.info("TestData:"+testData);
-		return testData;
-		
 
 	}
 
