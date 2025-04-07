@@ -21,8 +21,6 @@ public class UtilitiesDemo {
 
 	@Test(priority = 1)
 	public void propertiesReader() {
-
-		
 		try {
 			filereader = new FileReader(
 					System.getProperty("user.dir") + "//src//test//resources//Configuration//URL.properties");
@@ -38,7 +36,6 @@ public class UtilitiesDemo {
 
 	@Test(priority = 2)
 	public void excelReader() throws Exception {
-
 		fileInputStream = new FileInputStream(
 				System.getProperty("user.dir") + "//src//test//resources//TestData//Credentials.xlsx" );
 		XSSFWorkbook workbook = new XSSFWorkbook(fileInputStream);
