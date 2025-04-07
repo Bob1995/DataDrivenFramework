@@ -3,8 +3,8 @@
 <suite name="Suite">
 	<test name="Test">
 		<classes>
-			<class name="testcases.TC01_Login" />
-			<class name="testcases.TC02_HomePage" />
+			<class name="testcases.TC01_Login"></class>
+			<class name="testcases.TC02_HomePage" ></class>
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

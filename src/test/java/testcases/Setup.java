@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -20,11 +21,18 @@ public class Setup {
 
 	@BeforeMethod
 	public void navigateToURL() {
-		webdriver = new ChromeDriver();
+		
+		ChromeOptions chromeOptions=new ChromeOptions();
+		PropertiesReader.readProperties("ChromeOptions.properties");
+		chromeOptions.addArguments(PropertiesReader.properties.getProperty("headlessFlag"));
+		logger.info("Running browser in headless mode:"+PropertiesReader.properties.getProperty("headlessFlag"));
+		webdriver = new ChromeDriver(chromeOptions);
+		
 		PropertiesReader.readProperties("URL.properties");
 		webdriver.get(PropertiesReader.properties.getProperty("baseURL"));
 		logger.info("Launching Brower:" + webdriver.getTitle());
 		Assert.assertTrue(webdriver.getTitle().contains("Test Login | Practice Test Automation"), "Login Page is loaded successfully");
+		
 		webdriver.manage().window().maximize();
 		webdriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 

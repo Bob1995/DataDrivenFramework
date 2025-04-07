@@ -13,21 +13,17 @@ public class ReportGeneration {
 	static String path = "//src//test//resources//ExtentReports//ExtentReports_";
 
 	public static void extentReportGeneration(String scenarioName, String testCaseName, String testStep, String flag) {
+		extenthtmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir") + path + scenarioName + ".html");
+		extentReports = new ExtentReports();
+		extentReports.attachReporter(extenthtmlReporter);
+		extentTest = extentReports.createTest(scenarioName, testCaseName);
 		if (flag.equalsIgnoreCase("PASS") || flag.equalsIgnoreCase("Pass") || flag.equalsIgnoreCase("pass")) {
-			extenthtmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir") + path + scenarioName + ".html");
-			extentReports = new ExtentReports();
-			extentReports.attachReporter(extenthtmlReporter);
-			extentTest = extentReports.createTest(scenarioName, testCaseName);
 			extentTest.log(Status.PASS, testStep);
-			extentReports.flush();
 		} else if (flag.equalsIgnoreCase("FAIL") || flag.equalsIgnoreCase("fail") || flag.equalsIgnoreCase("fail")) {
-			extenthtmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir") + path + scenarioName + ".html");
-			extentReports = new ExtentReports();
-			extentReports.attachReporter(extenthtmlReporter);
-			extentTest = extentReports.createTest(scenarioName, testCaseName);
 			extentTest.log(Status.FAIL, testStep);
-			extentReports.flush();
+			
 		}
+		extentReports.flush();
 	}
 
 }
