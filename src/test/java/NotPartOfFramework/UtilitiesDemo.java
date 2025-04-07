@@ -41,22 +41,20 @@ public class UtilitiesDemo {
 
 		fileInputStream = new FileInputStream(
 				System.getProperty("user.dir") + "//src//test//resources//TestData//Credentials.xlsx" );
-
 		XSSFWorkbook workbook = new XSSFWorkbook(fileInputStream);
 		XSSFSheet sheet = workbook.getSheet("Sheet1");
 		int numberofRows = sheet.getPhysicalNumberOfRows();
 
-		Object[][] testData = new Object[numberofRows][2];
 
-		for (int i = 0; i < numberofRows; i++) {
+
+		for (int i = 1; i < numberofRows; i++) {
 			XSSFRow row = sheet.getRow(i);
 			XSSFCell userName = row.getCell(0);
 			XSSFCell password = row.getCell(1);
-			testData[i][0] = userName.getStringCellValue();
-			testData[i][1] = password.getStringCellValue();
-
+			logger.info("Username:"+userName);
+			logger.info("Password:"+password);
 		}
-		logger.info("TestData:"+testData);
+		
 
 	}
 
