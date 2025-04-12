@@ -24,7 +24,7 @@ public class Setup {
 		PropertiesReader.readProperties("ChromeOptions.properties");
 		chromeOptions.addArguments(PropertiesReader.properties.getProperty("headlessFlag"));
 		logger.info("Running browser in headless mode:" + PropertiesReader.properties.getProperty("headlessFlag"));
-		webdriver = new ChromeDriver();
+		webdriver = new ChromeDriver(chromeOptions);
 		PropertiesReader.readProperties("URL.properties");
 		webdriver.get(PropertiesReader.properties.getProperty("baseURL"));
 		logger.info("Launching Brower:" + webdriver.getTitle());
