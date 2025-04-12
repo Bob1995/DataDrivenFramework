@@ -21,6 +21,7 @@ public class Setup {
 	public void navigateToURL() {
 
 		ChromeOptions chromeOptions = new ChromeOptions();
+		//Added code for headless mode
 		PropertiesReader.readProperties("ChromeOptions.properties");
 		chromeOptions.addArguments(PropertiesReader.properties.getProperty("headlessFlag"));
 		logger.info("Running browser in headless mode:" + PropertiesReader.properties.getProperty("headlessFlag"));
