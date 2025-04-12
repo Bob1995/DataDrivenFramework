@@ -10,8 +10,6 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
-
-
 import Utilities.PropertiesReader;
 
 public class Setup {
@@ -21,18 +19,18 @@ public class Setup {
 
 	@BeforeMethod
 	public void navigateToURL() {
-		
-		ChromeOptions chromeOptions=new ChromeOptions();
+
+		ChromeOptions chromeOptions = new ChromeOptions();
 		PropertiesReader.readProperties("ChromeOptions.properties");
 		chromeOptions.addArguments(PropertiesReader.properties.getProperty("headlessFlag"));
-		logger.info("Running browser in headless mode:"+PropertiesReader.properties.getProperty("headlessFlag"));
-		webdriver = new ChromeDriver(chromeOptions);
-		
+		logger.info("Running browser in headless mode:" + PropertiesReader.properties.getProperty("headlessFlag"));
+		webdriver = new ChromeDriver();
 		PropertiesReader.readProperties("URL.properties");
 		webdriver.get(PropertiesReader.properties.getProperty("baseURL"));
 		logger.info("Launching Brower:" + webdriver.getTitle());
-		Assert.assertTrue(webdriver.getTitle().contains("Test Login | Practice Test Automation"), "Login Page is loaded successfully");
-		
+		Assert.assertTrue(webdriver.getTitle().contains("Test Login | Practice Test Automation"),
+				"Login Page is loaded successfully");
+
 		webdriver.manage().window().maximize();
 		webdriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 

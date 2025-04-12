@@ -1,6 +1,7 @@
 package pageobjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import Utilities.ReportGeneration;
 
@@ -17,6 +18,7 @@ public class LoginPageObjects {
 	}
 
 	public void enterUsername(String userName) {
+		
 		webdriver.findElement(userNameTextBox).sendKeys(userName);
 		
 	}
@@ -26,8 +28,11 @@ public class LoginPageObjects {
 	
 	}
 
+	//How to use javascript in selenium
 	public void clickOnLoginButton() {
-		webdriver.findElement(loginButton).click();
+		JavascriptExecutor executor = (JavascriptExecutor)webdriver;
+		executor.executeScript("arguments[0].click();", webdriver.findElement(loginButton));
+	
 	}
 
 	public void AssertLoginwithValidCredentials() {
