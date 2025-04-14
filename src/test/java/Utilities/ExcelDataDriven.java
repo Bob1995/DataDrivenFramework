@@ -18,6 +18,7 @@ public class ExcelDataDriven {
 
 		XSSFWorkbook workbook = new XSSFWorkbook(fileInputStream);
 		XSSFSheet sheet = workbook.getSheet(sheetName);
+		
 		int numberofRows = sheet.getPhysicalNumberOfRows();
 		int numberofColumns = sheet.getRow(0).getLastCellNum();
 		Object[][] testData = new Object[numberofRows][numberofColumns];
